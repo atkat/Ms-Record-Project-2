@@ -1,22 +1,25 @@
-const { Schema, model } = require("mongoose");
+const {
+  Schema,
+  model
+} = require("mongoose");
 
 // TODO: Please make sure you edit the user model to whatever makes sense in this case
 const userSchema = new Schema({
   username: {
     type: String,
-    unique: true 
+    unique: true
   },
   password: String,
-  collection: {
+  record: {
     type: Schema.Types.ObjectId,
-    ref: Record
+    ref: 'Record'
   },
-   avatar: {
-     enum: [img1]
-   },
+  // avatar: {
+  //   enum: 
+  // },
   wishList: {
     type: Schema.Types.ObjectId,
-    ref: Record
+    ref: 'Record'
   },
   aboutMe: String,
   location: String,
