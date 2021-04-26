@@ -5,12 +5,12 @@
   {{#if thumb}}
   <div class="artist_container">
     <img src='{{cover_image}}' style="height: 200px;" alt=" cover of {{title}}">
-    <h1>{{title}}</h1>
+    <h1><a href="/artist/{{id}}">{{title}}</a></h1>
   </div>
   {{else}}
   <div>
     <img src="./images/vinyl.jpeg" style="height: 200px;" alt="filler image">
-    <h1>{{title}}</h1>
+    <h1><a href="/artist/{{id}}">{{title}}</a></h1>
   </div>
   {{/if}}
   {{/each}}
