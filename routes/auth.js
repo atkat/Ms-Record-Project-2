@@ -44,7 +44,7 @@ router.post('/login', (req, res, next) => {
   User.findOne({ username: username })
     .then(userFromDB => {
       if (userFromDB === null) {
-        res.render('login', { message: 'Invalid credentials' });
+        res.render('auth/login', { message: 'Invalid credentials' });
         return;
       }
       if (bcrypt.compareSync(password, userFromDB.password)) {
