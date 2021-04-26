@@ -19,6 +19,8 @@ router.get('/artist-search', (req, res, next) => {
     })
   });
 
+  //router.get('/artist-details', (req))
+
   // dis.getArtist(108713)
   //   .then(c => {
   //     console.log(c)
