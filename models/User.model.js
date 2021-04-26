@@ -7,16 +7,16 @@ const userSchema = new Schema({
     unique: true 
   },
   password: String,
-  collection: {
+  records: {
     type: Schema.Types.ObjectId,
-    ref: Record
+    ref: 'Record'
   },
-   avatar: {
-     enum: [img1]
-   },
+  //  avatar: {
+  //    enum: [img1]
+  //  },
   wishList: {
     type: Schema.Types.ObjectId,
-    ref: Record
+    ref: 'Record'
   },
   aboutMe: String,
   location: String,
