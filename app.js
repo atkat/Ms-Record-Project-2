@@ -37,11 +37,11 @@ app.use(
 // end of session
 
 // default value for title local
-const projectName = "node-basic-auth";
+const projectName = "Project 2 Discogs";
 const capitalized = (string) =>
   string[0].toUpperCase() + string.slice(1).toLowerCase();
 
-// app.locals.title = `${capitalized(projectName)} created with Ironlauncher`;
+app.locals.title = projectName;
 
 // 👇 Start handling routes here
 const index = require("./routes/index");

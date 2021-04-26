@@ -10,13 +10,13 @@ const userSchema = new Schema({
     unique: true
   },
   password: String,
-  record: {
+  records: {
     type: Schema.Types.ObjectId,
     ref: 'Record'
   },
-  // avatar: {
-  //   enum: 
-  // },
+  //  avatar: {
+  //    enum: [img1]
+  //  },
   wishList: {
     type: Schema.Types.ObjectId,
     ref: 'Record'
