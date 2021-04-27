@@ -13,13 +13,14 @@ const loginCheck = () => {
 /* GET home page */
 router.get("/", (req, res, next) => {
   res.render("index");
-
 });
 
 router.get('/profile', loginCheck(), (req, res, next) => {
-  console.log('this is the cookie: ', req.cookies);
-  console.log('this is the logged in user: ', req.session.user);
   res.render('profile');
+})
+
+router.get('/wishlist', loginCheck(), (req, res, next) => {
+  res.render('wishlist');
 })
 
 module.exports = router;
