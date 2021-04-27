@@ -17,8 +17,6 @@ router.get("/", (req, res, next) => {
 });
 
 router.get('/profile', loginCheck(), (req, res, next) => {
-  console.log('this is the cookie: ', req.cookies);
-  console.log('this is the logged in user: ', req.session.user);
   res.render('profile');
 })
 

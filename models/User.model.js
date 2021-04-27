@@ -10,17 +10,11 @@ const userSchema = new Schema({
     unique: true
   },
   password: String,
-  records: {
-    type: Schema.Types.ObjectId,
-    ref: 'Record'
-  },
+  records: [String],
   //  avatar: {
   //    enum: [img1]
   //  },
-  wishList: {
-    type: Schema.Types.ObjectId,
-    ref: 'Record'
-  },
+  wishList: [String],
   aboutMe: String,
   location: String,
   role: {

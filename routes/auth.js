@@ -14,13 +14,13 @@ router.post('/signup', (req, res, next) => {
     password
   } = req.body;
   if (password.length < 8) {
-    res.render('signup', {
-      message: 'Your password has to be 8 chars min'
+    res.render('auth/signup', {
+      message: 'Your password must contain at least 8 characters'
     });
     return
   }
   if (username === '') {
-    res.render('signup', {
+    res.render('auth/signup', {
       message: 'Your username cannot be empty'
     });
     return
@@ -71,6 +71,10 @@ router.post('/login', (req, res, next) => {
       if (bcrypt.compareSync(password, userFromDB.password)) {
         req.session.user = userFromDB;
         res.redirect('/profile');
+      } else {
+        res.render('auth/login', {
+          message: 'Invalid credentials'
+        });
       }
     })
 })
