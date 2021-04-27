@@ -62,10 +62,5 @@ router.get('/artist/:id/addtowishlist', (req, res, next) => {
     })
 })
 
-// router.get('/artist/:id/:master_id', (req, res, next) => {
-//   dis.getMaster(req.params.master_id)
-//     .then(master => console.log(master))
-// })
-
 
 module.exports = router;
