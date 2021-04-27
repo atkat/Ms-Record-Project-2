@@ -1,0 +1,11 @@
+<h1>Albums</h1>
+
+{{#each albums}}
+<a href="/artist/{{id}}">
+  <h2>{{title}}</h2>
+</a>
+<img src="{{thumb}}" alt="{{title}}">
+<a href="/artist/{{id}}/addtocollection">Add to Collection</a>
+<a href="/artist/{{id}}/addtowishlist">Add to Wishlist</a>
+
+{{/each}}
