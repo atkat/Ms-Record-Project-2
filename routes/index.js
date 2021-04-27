@@ -1,3 +1,5 @@
+const User = require("../models/User.model");
+
 const router = require("express").Router();
 
 const loginCheck = () => {
@@ -16,7 +18,7 @@ router.get("/", (req, res, next) => {
 });
 
 router.get('/profile', loginCheck(), (req, res, next) => {
-  res.render('profile');
+  res.render('profile', {user: req.session.user});
 })
 
 router.get('/wishlist', loginCheck(), (req, res, next) => {

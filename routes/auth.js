@@ -11,7 +11,8 @@ router.post('/signup', (req, res, next) => {
   // connection Database & create new user Model goes here ->
   const {
     username,
-    password
+    password,
+    aboutMe
   } = req.body;
   if (password.length < 8) {
     res.render('auth/signup', {
@@ -26,7 +27,8 @@ router.post('/signup', (req, res, next) => {
     return
   }
   User.findOne({
-      username: username
+      username: username,
+      aboutMe: aboutMe
     })
     .then(userFromDB => {
       if (userFromDB !== null) {
@@ -39,7 +41,8 @@ router.post('/signup', (req, res, next) => {
         console.log(hash);
         User.create({
             username: username,
-            password: hash
+            password: hash,
+            aboutMe: aboutMe
           })
           .then(createdUser => {
             console.log(createdUser);
