@@ -9,24 +9,38 @@ router.get('/signup', (req, res, next) => {
 
 router.post('/signup', (req, res, next) => {
   // connection Database & create new user Model goes here ->
-  const { username, password } = req.body;
+  const {
+    username,
+    password
+  } = req.body;
   if (password.length < 8) {
-    res.render('signup', { message: 'Your password has to be 8 chars min' });
+    res.render('signup', {
+      message: 'Your password has to be 8 chars min'
+    });
     return
   }
   if (username === '') {
-    res.render('signup', { message: 'Your username cannot be empty' });
+    res.render('signup', {
+      message: 'Your username cannot be empty'
+    });
     return
   }
-  User.findOne({ username: username })
+  User.findOne({
+      username: username
+    })
     .then(userFromDB => {
       if (userFromDB !== null) {
-        res.render('signup', { message: 'This username is already taken' });
+        res.render('signup', {
+          message: 'This username is already taken'
+        });
       } else {
         const salt = bcrypt.genSaltSync();
         const hash = bcrypt.hashSync(password, salt);
         console.log(hash);
-        User.create({ username: username, password: hash })
+        User.create({
+            username: username,
+            password: hash
+          })
           .then(createdUser => {
             console.log(createdUser);
             res.redirect('/login');
@@ -40,11 +54,18 @@ router.get('/login', (req, res, next) => {
 })
 
 router.post('/login', (req, res, next) => {
-  const { username, password } = req.body;
-  User.findOne({ username: username })
+  const {
+    username,
+    password
+  } = req.body;
+  User.findOne({
+      username: username
+    })
     .then(userFromDB => {
       if (userFromDB === null) {
-        res.render('auth/login', { message: 'Invalid credentials' });
+        res.render('auth/login', {
+          message: 'Invalid credentials'
+        });
         return;
       }
       if (bcrypt.compareSync(password, userFromDB.password)) {
