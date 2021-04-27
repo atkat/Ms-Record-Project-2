@@ -10,3 +10,38 @@ a {
 h1 {
   color: 15px;
 }
+
+
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00b7ff;
+}
+
+h1 {
+  color: 15px;
+}
+
+.navbar {
+  background-color: rgb(85, 74, 88);
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  border-radius: 5px;
+}
+.navbar .input {
+  height: 90%;
+  width: 40%;
+}
+
+.navbar > a {
+  margin: 10px 25px 10px 10px;
+  color: white;
+  font-weight: bolder;
+  text-decoration: none;
+}
+
