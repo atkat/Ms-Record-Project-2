@@ -29,17 +29,22 @@ h1 {
   background-color: rgb(85, 74, 88);
   display: flex;
   flex-direction: row;
-  justify-content: left;
+  justify-content: space-between;
   align-items: center;
   border-radius: 5px;
 }
-.navbar .input {
+.navbar .search { 
+  margin-left:  10px 25px 10px 10px;;
+  display:flex;
+}
+
+.navbar > input {
+  margin-left: 10px;
   height: 90%;
   width: 40%;
 }
 
 .navbar > a {
-  margin: 10px 25px 10px 10px;
   color: white;
   font-weight: bolder;
   text-decoration: none;
