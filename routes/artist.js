@@ -8,7 +8,6 @@ var dis = new Discogs({
   consumerSecret: process.env.CONSUMER_SECRET
 }).database();
 
-
 router.get('/artist-search', (req, res, next) => {
   dis.search({
     title: req.query.q,
@@ -19,6 +18,7 @@ router.get('/artist-search', (req, res, next) => {
     })
   });
 });
+
 
 router.get('/artist/:id', (req, res, next) => {
   const artistId = req.params.id;
