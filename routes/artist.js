@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const User = require('../models/User.model');
-const Record = require('../models/Record.model');
 var Discogs = require('disconnect').Client;
 
 var dis = new Discogs({
@@ -24,6 +23,7 @@ router.get('/artist/:id', (req, res, next) => {
   const artistId = req.params.id;
   dis.getArtistReleases(req.params.id)
     .then(albums => {
+      console.log(albums)
       res.render('artist/album-view', {
         albums: albums.releases,
       })

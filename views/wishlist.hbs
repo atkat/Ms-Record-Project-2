@@ -1,4 +1,11 @@
 <h1>Wishlist</h1>
 
 <div class="wishlist">
+  {{#each records}}
+  <div class="album-card">
+    <img src="{{thumb}}" alt="">
+    <h2>{{artists_sort}}</h2>
+    <h3>{{title}}</h3>
+  </div>
+  {{/each}}
 </div>
