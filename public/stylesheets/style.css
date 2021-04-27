@@ -33,6 +33,11 @@ h1 {
   align-items: center;
   border-radius: 5px;
 }
+.navbar > a {
+  color: white;
+  font-weight: bolder;
+  text-decoration: none;
+}
 .navbar .search { 
   margin-left:  10px 25px 10px 10px;;
   display:flex;
@@ -44,9 +49,5 @@ h1 {
   width: 40%;
 }
 
-.navbar > a {
-  color: white;
-  font-weight: bolder;
-  text-decoration: none;
-}
+
 
