@@ -6,13 +6,13 @@
   <p>{{user.aboutMe}}</p>
 </div>
 
-<a href="/wishlist">Wishlist</a>
+<a href="/wishlist">Wishlist ({{user.wishList.length}})</a>
 
 <div class="collection-list">
   {{#each records}}
   <div class="album-card">
     <img src="{{thumb}}" alt="">
-    {{!-- <h2>{{artists_sort}}</h2> --}}
+    <h2>{{artists_sort}}</h2>
     <h3>{{title}}</h3>
   </div>
   {{/each}}
