@@ -21,6 +21,7 @@ h1 {
 }
 
 .navbar   {
+  height: 5vh;
   background-color: rgb(85, 74, 88);
   display: flex;
   flex-direction: row;
@@ -34,7 +35,7 @@ h1 {
   text-decoration: none;
 }
 .navbar .search { 
-  margin-left:  10px 25px 10px 10px;;
+  margin-left:  15px 25px 15px 25px;;
   display:flex;
 }
 
@@ -44,5 +45,18 @@ h1 {
   width: 40%;
 }
 
+.artist-results {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+}
 
+.artist-results .one-artist {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  text-justify: left;
+  
+}
 
