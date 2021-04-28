@@ -8,7 +8,6 @@ router.get('/signup', (req, res, next) => {
 })
 
 router.post('/signup', (req, res, next) => {
-  // connection Database & create new user Model goes here ->
   const {
     username,
     password,
@@ -17,14 +16,12 @@ router.post('/signup', (req, res, next) => {
   if (password.length < 8) {
     res.render('auth/signup', {
       message: 'Your password must contain at least 8 characters',
-      user: req.session.user
     });
     return
   }
   if (username === '') {
     res.render('auth/signup', {
       message: 'Your username cannot be empty',
-      user: req.session.user
     });
     return
   }
@@ -36,7 +33,6 @@ router.post('/signup', (req, res, next) => {
       if (userFromDB !== null) {
         res.render('auth/signup', {
           message: 'This username is already taken',
-          user: req.session.user
         });
       } else {
         const salt = bcrypt.genSaltSync();
@@ -48,7 +44,6 @@ router.post('/signup', (req, res, next) => {
             aboutMe: aboutMe
           })
           .then(createdUser => {
-            console.log(createdUser);
             res.redirect('login');
           })
       }
