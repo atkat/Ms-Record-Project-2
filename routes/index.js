@@ -46,7 +46,7 @@ router.get('/profile', loginCheck(), (req, res, next) => {
 
             res.render('profile', {
               records,
-              user: req.session.user
+              user
             })
           }
         })
@@ -73,7 +73,8 @@ router.get('/wishlist', loginCheck(), (req, res, next) => {
           if (counter === collection.length) {
             res.render('wishlist', {
               records,
-              user: req.session.user
+              user
+
             })
           }
         })

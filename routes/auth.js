@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const User = require('../models/User.model');
-const Record = require('../models/Record.model');
 const bcrypt = require('bcrypt');
 
 router.get('/signup', (req, res, next) => {
@@ -11,7 +10,9 @@ router.post('/signup', (req, res, next) => {
   const {
     username,
     password,
-    aboutMe
+    aboutMe,
+    city,
+    country
   } = req.body;
   if (password.length < 8) {
     res.render('auth/signup', {
@@ -27,7 +28,9 @@ router.post('/signup', (req, res, next) => {
   }
   User.findOne({
       username: username,
-      aboutMe: aboutMe
+      aboutMe: aboutMe,
+      city: city,
+      country: country
     })
     .then(userFromDB => {
       if (userFromDB !== null) {
@@ -41,10 +44,12 @@ router.post('/signup', (req, res, next) => {
         User.create({
             username: username,
             password: hash,
-            aboutMe: aboutMe
+            aboutMe: aboutMe,
+            city: city,
+            country: country
           })
           .then(createdUser => {
-            res.redirect('login');
+            res.redirect('/login');
           })
       }
     })

@@ -16,7 +16,8 @@ const userSchema = new Schema({
   //  },
   wishList: [String],
   aboutMe: String,
-  location: String,
+  city: String,
+  country: String,
   role: {
     type: String,
     enum: ['admin', 'user'],
