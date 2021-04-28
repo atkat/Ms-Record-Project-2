@@ -12,17 +12,21 @@
    <body>
       <div class="navbar">
          <div class="search">
-            <a href="/">Home</a>
+            <a href="/"><button>Home</button></a>
             <form action="/artist-search" method="GET">
                <input type="text" placeholder="Search..." id="title" name="q" />
             </form>
          </div>
 
          <div class="links">
+            {{#if user}}
             <a href="/profile"><button>Profile</button></a>
-            <a href="/login">Log In</a>
+            <a href="/logout"><button>Logout</button></a>
+            {{else}}
+            <a href="/login"><button>Log In</button></a>
             <a href="/signup"><button>Sign Up</button></a>
-            <a href="/logout">Logout</a>
+            {{/if}}
+            
          </div>
 
       </div>
