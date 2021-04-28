@@ -6,14 +6,18 @@
   <h2>{{title}}</h2>
 </a>
 <img src="{{thumb}}" alt="{{title}}">
-<a href="/artist/{{main_release}}/addtocollection">Add to Collection</a>
-<a href="/artist/{{main_release}}/addtowishlist">Add to wishlist</a>
+{{#if ../user}}
+<a href="/artist/{{main_release}}/addtocollection"><button>Add to Collection</button></a>
+<a href="/artist/{{main_release}}/addtowishlist"><button>Add to Wishlist</button></a>
+{{/if}}
 {{else}}
 <a href="/artist/{{../artistId}}/album/{{id}}">
   <h2>{{title}}</h2>
 </a>
 <img src="{{thumb}}" alt="{{title}}">
-<a href="/artist/{{id}}/addtocollection">Add to Collection</a>
-<a href="/artist/{{id}}/addtowishlist">Add to wishlist</a>
+{{#if ../user}}
+<a href="/artist/{{id}}/addtocollection"><button>Add to Collection</button></a>
+<a href="/artist/{{id}}/addtowishlist"><button>Add to Wishlist</button></a>
+{{/if}}
 {{/if}}
 {{/each}}

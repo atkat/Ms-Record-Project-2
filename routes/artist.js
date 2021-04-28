@@ -22,7 +22,6 @@ router.get('/artist-search', (req, res, next) => {
 router.get('/artist/:id', (req, res, next) => {
   dis.getArtistReleases(req.params.id)
     .then(albums => {
-      //console.log(albums)
       res.render('artist/album-view', {
         albums: albums.releases,
         artistId: req.params.id,
