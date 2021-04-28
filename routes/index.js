@@ -35,7 +35,7 @@ router.get('/profile', loginCheck(), (req, res, next) => {
         user
       })
     }
-  
+
     collection.forEach(recordId => {
       dis
         .getRelease(recordId)
@@ -43,6 +43,7 @@ router.get('/profile', loginCheck(), (req, res, next) => {
           counter++
           records.push(record)
           if (counter === collection.length) {
+            console.log("collection", record)
             res.render('profile', {
               records,
               user: req.session.user
@@ -65,7 +66,7 @@ router.get('/wishlist', loginCheck(), (req, res, next) => {
         user
       })
     }
-    
+
     collection.forEach(recordId => {
       dis
         .getRelease(recordId)
