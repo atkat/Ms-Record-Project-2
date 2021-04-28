@@ -43,7 +43,6 @@ router.get('/profile', loginCheck(), (req, res, next) => {
           counter++
           records.push(record)
           if (counter === collection.length) {
-            console.log("collection", record)
             res.render('profile', {
               records,
               user: req.session.user
@@ -57,7 +56,7 @@ router.get('/profile', loginCheck(), (req, res, next) => {
 router.get('/wishlist', loginCheck(), (req, res, next) => {
   User.findById(req.session.user._id).then(user => {
     const collection = user.wishList;
-    const records = [].sort();
+    const records = []
     let counter = 0;
     if (collection.length === 0) {
       res.render('wishlist', {
@@ -72,7 +71,6 @@ router.get('/wishlist', loginCheck(), (req, res, next) => {
           counter++
           records.push(record)
           if (counter === collection.length) {
-            console.log(records[1]);
             res.render('wishlist', {
               records,
               user: req.session.user
