@@ -1,0 +1,14 @@
+<div class="info">
+  <img src="{{coverImg}}" alt="albumcover {{albumDetails.title}}">
+  <div>
+    <h1>{{albumDetails.artists_sort}} – {{albumDetails.title}}</h1>
+    <h3>{{albumDetails.year}}</h3>
+  </div>
+</div>
+
+<ul>
+  {{#each tracklist}}
+  <li>{{position}}. {{title}}{{#if duration}} – {{duration}}{{/if}}</li>
+  {{/each}}
+</ul>
+<p>{{albumDetails.notes}}</p>

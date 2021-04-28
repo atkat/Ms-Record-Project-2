@@ -1,5 +1,4 @@
 const User = require("../models/User.model");
-
 const router = require("express").Router();
 var Discogs = require('disconnect').Client;
 
@@ -43,6 +42,8 @@ router.get('/profile', loginCheck(), (req, res, next) => {
           counter++
           records.push(record)
           if (counter === collection.length) {
+            console.log(record);
+
             res.render('profile', {
               records,
               user: req.session.user

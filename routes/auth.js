@@ -16,13 +16,15 @@ router.post('/signup', (req, res, next) => {
   } = req.body;
   if (password.length < 8) {
     res.render('auth/signup', {
-      message: 'Your password must contain at least 8 characters'
+      message: 'Your password must contain at least 8 characters',
+      user: req.session.user
     });
     return
   }
   if (username === '') {
     res.render('auth/signup', {
-      message: 'Your username cannot be empty'
+      message: 'Your username cannot be empty',
+      user: req.session.user
     });
     return
   }
@@ -33,7 +35,8 @@ router.post('/signup', (req, res, next) => {
     .then(userFromDB => {
       if (userFromDB !== null) {
         res.render('auth/signup', {
-          message: 'This username is already taken'
+          message: 'This username is already taken',
+          user: req.session.user
         });
       } else {
         const salt = bcrypt.genSaltSync();
@@ -53,7 +56,9 @@ router.post('/signup', (req, res, next) => {
 })
 
 router.get('/login', (req, res, next) => {
-  res.render('auth/login');
+  res.render('auth/login', {
+    user: req.session.user
+  });
 })
 
 router.post('/login', (req, res, next) => {
@@ -67,7 +72,8 @@ router.post('/login', (req, res, next) => {
     .then(userFromDB => {
       if (userFromDB === null) {
         res.render('auth/login', {
-          message: 'Invalid credentials'
+          message: 'Invalid credentials',
+          user: req.session.user
         });
         return;
       }
@@ -76,7 +82,8 @@ router.post('/login', (req, res, next) => {
         res.redirect('/profile');
       } else {
         res.render('auth/login', {
-          message: 'Invalid credentials'
+          message: 'Invalid credentials',
+          user: req.session.user
         });
       }
     })

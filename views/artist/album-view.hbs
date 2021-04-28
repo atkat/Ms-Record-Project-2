@@ -1,21 +1,19 @@
-<h1>Albums</h1>
-
+<h1>{{albums.1.artist}}</h1>
+<h2>Albums:</h2>
 {{#each albums}}
-<a href="/artist/{{id}}">
+{{#if main_release}}
+<a href="/artist/{{../artistId}}/album/{{main_release}}">
   <h2>{{title}}</h2>
 </a>
 <img src="{{thumb}}" alt="{{title}}">
-
-{{#if main_release}}
 <a href="/artist/{{main_release}}/addtocollection">Add to Collection</a>
-{{else}}
-<a href="/artist/{{id}}/addtocollection">Add to Collection</a>
-{{/if}}
-
-{{#if main_release}}
 <a href="/artist/{{main_release}}/addtowishlist">Add to wishlist</a>
 {{else}}
+<a href="/artist/{{../artistId}}/album/{{id}}">
+  <h2>{{title}}</h2>
+</a>
+<img src="{{thumb}}" alt="{{title}}">
+<a href="/artist/{{id}}/addtocollection">Add to Collection</a>
 <a href="/artist/{{id}}/addtowishlist">Add to wishlist</a>
 {{/if}}
-
 {{/each}}

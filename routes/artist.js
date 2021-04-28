@@ -13,18 +13,19 @@ router.get('/artist-search', (req, res, next) => {
     type: 'artist'
   }).then(c => {
     res.render('artist/artist-results', {
-      artists: c.results
+      artists: c.results,
+      user: req.session.user
     })
   });
 });
 
 router.get('/artist/:id', (req, res, next) => {
-  const artistId = req.params.id;
   dis.getArtistReleases(req.params.id)
     .then(albums => {
-     // console.log(albums)
+      //console.log(albums)
       res.render('artist/album-view', {
         albums: albums.releases,
+        artistId: req.params.id
       })
     })
 });
@@ -70,11 +71,11 @@ router.get('/artist/:id/delete', (req, res, next) => {
         records: req.params.id
       }
     })
-    .then( () =>  {
+    .then(() => {
       res.redirect('/profile')
     })
 });
-    
+
 router.get('/artist/:id/deleteWishList', (req, res, next) => {
   const user = req.session.user._id;
   User
@@ -83,9 +84,22 @@ router.get('/artist/:id/deleteWishList', (req, res, next) => {
         wishList: req.params.id
       }
     })
-    .then( () =>  {
+    .then(() => {
       res.redirect('/wishlist')
     })
 });
-    
+
+router.get('/artist/:artistId/album/:main_release', (req, res, next) => {
+  const albumId = req.params.main_release;
+  dis
+    .getRelease(albumId).then(albumFromDiscogs => {
+      console.log(albumFromDiscogs.images[0].uri)
+      res.render('artist/album-details', {
+        tracklist: albumFromDiscogs.tracklist,
+        albumDetails: albumFromDiscogs,
+        coverImg: albumFromDiscogs.images[0].uri
+
+      })
+    })
+})
 module.exports = router;
