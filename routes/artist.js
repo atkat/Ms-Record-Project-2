@@ -61,19 +61,31 @@ router.get('/artist/:id/addtowishlist', (req, res, next) => {
     })
 })
 
-//DELETE RECORD FROM COLLECTION !!WIP
-router.post('/artist/:id/delete', (req, res, next) => {
+//DELETE RECORD 
+router.get('/artist/:id/delete', (req, res, next) => {
   const user = req.session.user._id;
-  const record = req.params.id
-  console.log("THIS", user, record);
   User
-    .findByIdAndUpdate(user)
-    .then( record =>  {
-      console.log('TO DELETE:', record);
-      user.records.filter(one => one!==record);
-      res.redirect('back')
+    .findByIdAndUpdate(user, {
+      $pull: {
+        records: req.params.id
+      }
     })
-
+    .then( () =>  {
+      res.redirect('/profile')
+    })
+});
+    
+router.get('/artist/:id/deleteWishList', (req, res, next) => {
+  const user = req.session.user._id;
+  User
+    .findByIdAndUpdate(user, {
+      $pull: {
+        wishList: req.params.id
+      }
+    })
+    .then( () =>  {
+      res.redirect('/wishlist')
+    })
 });
     
 module.exports = router;
