@@ -35,6 +35,7 @@ router.get('/profile', loginCheck(), (req, res, next) => {
         user
       })
     }
+  
     collection.forEach(recordId => {
       dis
         .getRelease(recordId)
@@ -64,6 +65,7 @@ router.get('/wishlist', loginCheck(), (req, res, next) => {
         user
       })
     }
+    
     collection.forEach(recordId => {
       dis
         .getRelease(recordId)

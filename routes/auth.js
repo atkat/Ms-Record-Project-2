@@ -32,7 +32,7 @@ router.post('/signup', (req, res, next) => {
     })
     .then(userFromDB => {
       if (userFromDB !== null) {
-        res.render('signup', {
+        res.render('auth/signup', {
           message: 'This username is already taken'
         });
       } else {
