@@ -25,7 +25,8 @@ router.get('/artist/:id', (req, res, next) => {
       //console.log(albums)
       res.render('artist/album-view', {
         albums: albums.releases,
-        artistId: req.params.id
+        artistId: req.params.id,
+        user: req.session.user
       })
     })
 });
@@ -97,8 +98,8 @@ router.get('/artist/:artistId/album/:main_release', (req, res, next) => {
       res.render('artist/album-details', {
         tracklist: albumFromDiscogs.tracklist,
         albumDetails: albumFromDiscogs,
-        coverImg: albumFromDiscogs.images[0].uri
-
+        coverImg: albumFromDiscogs.images[0].uri,
+        user: req.session.user
       })
     })
 })
