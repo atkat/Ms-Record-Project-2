@@ -5,6 +5,17 @@
   <h2>{{title}}</h2>
 </a>
 <img src="{{thumb}}" alt="{{title}}">
+
+{{#if main_release}}
+<a href="/artist/{{main_release}}/addtocollection">Add to Collection</a>
+{{else}}
 <a href="/artist/{{id}}/addtocollection">Add to Collection</a>
-<a href="/artist/{{id}}/addtowishlist">Add to Wishlist</a>
+{{/if}}
+
+{{#if main_release}}
+<a href="/artist/{{main_release}}/addtowishlist">Add to wishlist</a>
+{{else}}
+<a href="/artist/{{id}}/addtowishlist">Add to wishlist</a>
+{{/if}}
+
 {{/each}}
