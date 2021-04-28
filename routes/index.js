@@ -20,7 +20,9 @@ const loginCheck = () => {
 
 /* GET home page */
 router.get("/", (req, res, next) => {
-  res.render('index', {user: req.session.user});
+  res.render('index', {
+    user: req.session.user
+  });
 });
 
 router.get('/profile', loginCheck(), (req, res, next) => {
@@ -28,6 +30,12 @@ router.get('/profile', loginCheck(), (req, res, next) => {
     const collection = user.records;
     const records = [];
     let counter = 0;
+    if (collection.length === 0) {
+      res.render('profile', {
+        user
+      })
+    }
+  
     collection.forEach(recordId => {
       dis
         .getRelease(recordId)
@@ -50,8 +58,14 @@ router.get('/profile', loginCheck(), (req, res, next) => {
 router.get('/wishlist', loginCheck(), (req, res, next) => {
   User.findById(req.session.user._id).then(user => {
     const collection = user.wishList;
-    const records = [];
+    const records = [].sort();
     let counter = 0;
+    if (collection.length === 0) {
+      res.render('wishlist', {
+        user
+      })
+    }
+    
     collection.forEach(recordId => {
       dis
         .getRelease(recordId)
@@ -59,6 +73,7 @@ router.get('/wishlist', loginCheck(), (req, res, next) => {
           counter++
           records.push(record)
           if (counter === collection.length) {
+            console.log(records[1]);
             res.render('wishlist', {
               records,
               user: req.session.user
