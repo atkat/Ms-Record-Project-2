@@ -49,7 +49,7 @@ router.post('/signup', (req, res, next) => {
           })
           .then(createdUser => {
             console.log(createdUser);
-            res.redirect('auth/login');
+            res.redirect('login');
           })
       }
     })
