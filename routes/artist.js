@@ -18,12 +18,11 @@ router.get('/artist-search', (req, res, next) => {
   });
 });
 
-
 router.get('/artist/:id', (req, res, next) => {
   const artistId = req.params.id;
   dis.getArtistReleases(req.params.id)
     .then(albums => {
-      console.log(albums)
+     // console.log(albums)
       res.render('artist/album-view', {
         albums: albums.releases,
       })
@@ -32,7 +31,7 @@ router.get('/artist/:id', (req, res, next) => {
 
 router.get('/artist/:id/addtocollection', (req, res, next) => {
   const user = req.session.user._id;
-  console.log("paramsId", req.params.id);
+  //console.log("paramsId", req.params.id);
   User
     .findByIdAndUpdate(user, {
       $push: {
@@ -48,7 +47,7 @@ router.get('/artist/:id/addtocollection', (req, res, next) => {
 
 router.get('/artist/:id/addtowishlist', (req, res, next) => {
   const user = req.session.user._id;
-  console.log("paramsId", req.params.id);
+  //console.log("paramsId", req.params.id);
   User
     .findByIdAndUpdate(user, {
       $push: {
@@ -62,5 +61,19 @@ router.get('/artist/:id/addtowishlist', (req, res, next) => {
     })
 })
 
+//DELETE RECORD FROM COLLECTION !!WIP
+router.post('/artist/:id/delete', (req, res, next) => {
+  const user = req.session.user._id;
+  const record = req.params.id
+  console.log("THIS", user, record);
+  User
+    .findByIdAndUpdate(user)
+    .then( record =>  {
+      console.log('TO DELETE:', record);
+      user.records.filter(one => one!==record);
+      res.redirect('back')
+    })
 
+});
+    
 module.exports = router;

@@ -53,8 +53,6 @@ router.get('/profile', loginCheck(), (req, res, next) => {
   })
 })
 
-
-
 router.get('/wishlist', loginCheck(), (req, res, next) => {
   User.findById(req.session.user._id).then(user => {
     const collection = user.wishList;
@@ -65,7 +63,7 @@ router.get('/wishlist', loginCheck(), (req, res, next) => {
         user
       })
     }
-    
+   
     collection.forEach(recordId => {
       dis
         .getRelease(recordId)

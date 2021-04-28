@@ -46,7 +46,7 @@ router.post('/signup', (req, res, next) => {
           })
           .then(createdUser => {
             console.log(createdUser);
-            res.redirect('/login');
+            res.redirect('auth/login');
           })
       }
     })

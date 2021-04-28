@@ -11,10 +11,20 @@
 
    <body>
       <div class="navbar">
-         <a href="/">Home</a>
+         <div class="search">
+            <a href="/">Home</a>
             <form action="/artist-search" method="GET">
-            <input type="text" placeholder="Search..." id="title" name="q" />
-         </form>
+               <input type="text" placeholder="Search..." id="title" name="q" />
+            </form>
+         </div>
+
+         <div class="links">
+            <a href="/profile"><button>Profile</button></a>
+            <a href="/login">Log In</a>
+            <a href="/signup"><button>Sign Up</button></a>
+            <a href="/logout">Logout</a>
+         </div>
+
       </div>
       {{{body}}}
       <script src="/js/script.js"></script>
