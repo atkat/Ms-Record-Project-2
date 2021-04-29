@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;0,900;1,400;1,500&display=swap');
 
+:root {
+  --backgroundColor: #1b4d80;
+  --white: #ffffff;
+}
+
 * {
   font-family: sans-serif;
   padding: 0;
@@ -30,6 +35,9 @@ a {
   color: white;
   letter-spacing: 2px;
   font-weight: 600;
+  width: 100%;
+  max-width: 1000px;
+  min-width: 200px;
 }
 
 .navbar {
@@ -70,12 +78,8 @@ a {
 }
 
 .search {
-  margin: 0 3rem;
+  margin: 0 4rem;
   flex-grow: 1;
-}
-
-.navbar input {
-  width: 100%;
 }
 
 main {
@@ -90,17 +94,35 @@ section {
 }
 
 .artist-results {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-content: space-between;
+  margin-top: 120px;
+  text-align: center;
 }
 
-.artist-results .one-artist {
-  width: 25%;
-  display: flex;
-  flex-direction: column;
-  text-justify: left;
+.artist-results h1 {
+  margin: 3rem;
+  font-size: 2rem;
+}
+
+.artist_container {
+  margin: 0 4rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+}
+
+.artist-card img {
+  height: 300px;
+  width: 200px;
+  object-fit: cover;
+}
+
+.artist-card {
+  margin-bottom: 3rem;
+}
+
+.artist-card a {
+  text-align: center;
+  color: black;
 }
 
 .index {
@@ -123,4 +145,44 @@ section {
 .textbox {
   background-color: rgba(0, 0, 0, 0.651);
   padding: 3rem 4rem;
+}
+
+.signup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.signup form {
+  border: 1.5px solid black;
+  padding: 2rem;
+}
+
+form>div {
+  margin-bottom: 1rem;
+}
+
+.signup h2 {
+  margin-bottom: 2rem;
+}
+
+.signup p {
+  margin-top: 2rem;
+}
+
+.signup button {
+  color: white;
+  background-color: black;
+  border: none;
+  display: block;
+  margin: 2rem auto 0;
+  padding: 0.5rem 1rem;
+  width: 40%;
+}
+
+.signup label {
+  display: inline-block;
+  width: 100px;
 }

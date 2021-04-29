@@ -1,17 +1,24 @@
-<h1>Artists: </h1>
+<div class="artist-results">
+  <h1>Artists: </h1>
 
-<main class="artist-results">
-  {{#each artists}}
-  {{#if thumb}}
   <div class="artist_container">
-    <img src='{{cover_image}}' style="height: 200px;" alt=" cover of {{title}}">
-    <h1><a href="/artist/{{id}}">{{title}}</a></h1>
+    {{#each artists}}
+    {{#if thumb}}
+    <div class="artist-card">
+      <a href="/artist/{{id}}">
+        <img src='{{cover_image}}' style="height: 200px;" alt=" cover of {{title}}">
+      </a>
+      <h2><a href="/artist/{{id}}">{{title}}</a></h2>
+    </div>
+
+    {{else}}
+    <div class="artist-card">
+      <a href="/artist/{{id}}">
+        <img src="./images/vinyl.jpeg" style="height: 200px;" alt="filler image">
+      </a>
+      <h2><a href="/artist/{{id}}">{{title}}</a></h2>
+    </div>
+    {{/if}}
+    {{/each}}
   </div>
-  {{else}}
-  <div class="one-artist">
-    <img src="./images/vinyl.jpeg" style="height: 200px;" alt="filler image">
-    <h1><a href="/artist/{{id}}">{{title}}</a></h1>
-  </div>
-  {{/if}}
-  {{/each}}
-</main>
+</div>

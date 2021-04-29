@@ -119,4 +119,28 @@ router.get('/artist/:artistId/album/:main_release', (req, res, next) => {
       })
     })
 })
+
+router.get('/user/editProfile', (req, res, next) => { 
+  const user = req.session.user._id;
+  User.findById(user).
+  then( userFromDB => {
+  res.render('user/editProfile', {userFromDB})
+})
+})
+
+router.post('/editProfile', (req, res, next) => {
+  const user = req.session.user._id;
+  //console.log("THIS IS BODY:", req.body);
+  const { aboutMe, city, country } = req.body;
+  User
+    .findByIdAndUpdate(user, { aboutMe, city, country }, { new: true})
+    .then(user => {
+      //console.log(updatedUser)
+      res.redirect('/profile')
+    })
+    .catch(err => {
+      next(err)
+    })
+})
+
 module.exports = router;

@@ -1,0 +1,17 @@
+<div class="signup">
+  <form action='/editProfile' method='POST'>
+    <h2>Edit Your Details:</h2>
+    <div>
+      <label for='city'> City: </label>
+      <input type='text' name='city' id='city' value={{userFromDB.city}}>
+    </div>
+    <div>
+      <label for='state'>Country: </label>
+      <input type='text' name='country' id='country' value={{userFromDB.country}}>
+    </div>
+    <div>
+      <label for='aboutMe'>About Me: </label>
+      <textarea type='text' name='aboutMe' id='aboutMe' value="{{userFromDB.aboutMe}}"></textarea>
+    </div>
+    <button type="submit">Update</button>
+  </form>
