@@ -30,7 +30,7 @@ app.use(
     saveUninitialized: false,
     resave: true,
     store: MongoStore.create({
-      mongoUrl: "mongodb://localhost/Project-2-Discogs"
+      mongoUrl: "mongodb+srv://Atkat:M0ng0_Atlas@cluster0.7fcao.mongodb.net/records?retryWrites=true&w=majority"
     })
   })
 )
