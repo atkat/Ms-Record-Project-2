@@ -1,19 +1,31 @@
-<h2>Sign Up</h2>
 <div class="signup">
-<form action='/signup' method='POST'>
-  <label for='username'>Username: </label>
-  <input type='text' name='username' id='username'>
-  <label for='password'>Password: </label>
-  <input type='password' name='password' id='password'>
-  <label for='aboutMe'>About me: </label>
-  <input type='text' name='aboutMe' id='aboutMe'>
-  <label for='city'>City: </label>
-  <input type='text' name='city' id='city'>
-  <label for='state'>Country: </label>
-  <input type='text' name='country' id='country'>
-  <button type="submit">Sign Up</button>
-</form>
-{{#if message}}
-<p style='color: red'>{{message}}</p>
-{{/if}}
+
+  <form action='/signup' method='POST'>
+    <h2>Sign Up</h2>
+    <div>
+      <label for='username'>Username: </label>
+      <input type='text' name='username' id='username'>
+    </div>
+    <div>
+      <label for='password'>Password: </label>
+      <input type='password' name='password' id='password'>
+    </div>
+
+    <div>
+      <label for='city'>City: </label>
+      <input type='text' name='city' id='city'>
+    </div>
+    <div>
+      <label for='state'>Country: </label>
+      <input type='text' name='country' id='country'>
+    </div>
+    <div>
+      <label for='aboutMe'>About me: </label>
+      <textarea type='text' name='aboutMe' id='aboutMe'></textarea>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+  {{#if message}}
+  <p style='color: red'>{{message}}</p>
+  {{/if}}
 </div>

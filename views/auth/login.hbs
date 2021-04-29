@@ -1,12 +1,18 @@
-<h2>Login</h2>
-<form action='/login' method='POST'>
-  <label for='username'>Username: </label>
-  <input type='text' name='username' id='username'>
-  <label for='password'>Password: </label>
-  <input type='password' name='password' id='password'>
-  <button type='submit'>Log In</button>
-</form>
-{{#if message}}
-<p style='color: red'>{{message}}</p>
-{{/if}}
-<p>Don't have an account? Please <a href="/signup">sign up</a>!</p>
+<div class="signup">
+  <form action='/login' method='POST'>
+    <h2>Login</h2>
+    <div>
+      <label for='username'>Username: </label>
+      <input type='text' name='username' id='username'>
+    </div>
+    <div>
+      <label for='password'>Password: </label>
+      <input type='password' name='password' id='password'>
+    </div>
+    <button type='submit'>Log In</button>
+  </form>
+  {{#if message}}
+  <p style='color: red'>{{message}}</p>
+  {{/if}}
+  <p>Don't have an account? Please <a href="/signup"><mark>sign up</mark></a>!</p>
+</div>

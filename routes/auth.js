@@ -27,7 +27,7 @@ router.post('/signup', (req, res, next) => {
     return
   }
   User.findOne({
-      username: username,
+      username: username
     })
     .then(userFromDB => {
       if (userFromDB !== null) {
