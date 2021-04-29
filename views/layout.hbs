@@ -11,7 +11,7 @@
 
 <body>
    <div class="navbar">
-      <a href="/"><img src="../images/logo.png" alt=""></a>
+      <a href='/'><img src='../images/logo.png' alt=""></a>
       <div class="search">
          <form action="/artist-search" method="GET">
             <input type="text" placeholder="Search for artists" id="title" name="q" />
@@ -19,9 +19,6 @@
       </div>
       <div class="links">
          {{#if user}}
-         <h3>
-            <h4>Welcome {{user.username}}!</h4>
-         </h3>
          <a href="/profile">Profile</a>
          <a href="/logout">Logout</a>
          {{else}}

@@ -55,10 +55,7 @@ router.get('/profile/:userName', (req, res, next) => {
           })
       })
     })
-  } else {
-    res.redirect('/signup')
-  }
-
+  } else res.redirect('/signup')
 })
 
 router.get('/profile/:userName/wishlist', (req, res, next) => {
@@ -90,9 +87,7 @@ router.get('/profile/:userName/wishlist', (req, res, next) => {
           })
       })
     })
-  } else {
-    res.redirect('/signup')
-  }
+  } else res.redirect('/signup')
 })
 
 module.exports = router;

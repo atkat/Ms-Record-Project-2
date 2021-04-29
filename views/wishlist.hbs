@@ -1,16 +1,18 @@
-<h1>Wishlist</h1>
+<div class="collection-list profile">
+  <h1>Wishlist</h1>
 
-<div class="wishlist">
-  {{#each records}}
-  <div class="album-card">
-    <a href="/artist/{{artists.0.id}}">
-      <h2>{{artists_sort}}</h2>
-    </a>
-    <a href="/artist/{{artists.0.id}}/album/{{id}}">
-      <img src="{{thumb}}" alt="">
-      <h3>{{title}}</h3>
-    </a>
-    <a href="/artist/{{id}}/deleteWishList"><button>Remove from Wishlist</button></a>
+  <div class="collection-container">
+    {{#each records}}
+    <div class="album-card-profile">
+      <a href="/artist/{{artists.0.id}}">
+        <h2>{{artists_sort}}</h2>
+      </a>
+      <a href="/artist/{{artists.0.id}}/album/{{id}}">
+        <img src="{{images.0.uri}}" alt="">
+        <h3>{{title}}</h3>
+      </a>
+      <a id="button-remove" href="/artist/{{id}}/deleteWishList">Remove from Wishlist</a>
+    </div>
+    {{/each}}
   </div>
-  {{/each}}
 </div>

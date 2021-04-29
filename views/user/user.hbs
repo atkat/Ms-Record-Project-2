@@ -1,21 +1,30 @@
-<h1>{{user.username}}</h1>
-<div class="aboutme">
-  <h3>About me:</h3>
-  <p>{{user.aboutMe}}</p>
-  <h3>{{user.city}}, {{user.country}}</h3>
-</div>
-<a href="/profile/{{user.username}}/wishlist">Wishlist ({{user.wishList.length}})</a>
-
-<div class="collection-list">
-  {{#each records}}
-  <div class="album-card">
-    <a href="/artist/{{artists.0.id}}">
-      <h2>{{artists_sort}}</h2>
-    </a>
-    <a href="/artist/{{artists.0.id}}/album/{{id}}">
-      <img src="{{thumb}}" alt="">
-      <h3>{{title}}</h3>
-    </a>
+<div class="profile">
+  <div class="profile-details">
+    <h1>{{user.username}}</h1>
+    <div class="aboutme">
+      <h3>About me:</h3>
+      <p>{{user.aboutMe}}</p>
+      <h3>{{user.city}}, {{user.country}}</h3>
+      {{!-- <a href="/user/editProfile">Edit Profile</a> --}}
+    </div>
+    <a href="/profile/{{user.username}}/wishlist">Wishlist ({{user.wishList.length}})</a>
   </div>
-  {{/each}}
+
+  <div class="collection-list">
+    <h1>Collection of {{user.username}}:</h1>
+    <div class="collection-container">
+      {{#each records}}
+      <div class="album-card-profile">
+        <a href="/artist/{{artists.0.id}}">
+          <h2>{{artists_sort}}</h2>
+        </a>
+        <a href="/artist/{{artists.0.id}}/album/{{id}}">
+          <img src="{{images.0.uri}}" alt="image">
+          <h3>{{title}}</h3>
+        </a>
+        {{!-- <a id="button-remove" href="/artist/{{id}}/delete">Remove from Collection</a> --}}
+      </div>
+      {{/each}}
+    </div>
+  </div>
 </div>

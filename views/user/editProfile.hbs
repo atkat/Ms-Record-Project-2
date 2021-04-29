@@ -2,7 +2,7 @@
   <form action='/editProfile' method='POST'>
     <h2>Edit Your Details:</h2>
     <div>
-      <label for='city'> City: </label>
+      <label for='city'>City: </label>
       <input type='text' name='city' id='city' value={{userFromDB.city}}>
     </div>
     <div>
@@ -11,7 +11,7 @@
     </div>
     <div>
       <label for='aboutMe'>About Me: </label>
-      <textarea type='text' name='aboutMe' id='aboutMe' value="{{userFromDB.aboutMe}}"></textarea>
+      <textarea type='text' name='aboutMe' id='aboutMe'>{{userFromDB.aboutMe}}</textarea>
     </div>
     <button type="submit">Update</button>
   </form>
