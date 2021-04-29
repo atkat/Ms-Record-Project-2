@@ -1,11 +1,15 @@
+<div class="album-view">
 <h1>{{albums.1.artist}}</h1>
 <h2>Albums:</h2>
+
+<div class="album-view-container">
 {{#each albums}}
 {{#if main_release}}
+<div class="album-card">
 <a href="/artist/{{../artistId}}/album/{{main_release}}">
-  <h2>{{title}}</h2>
+  <img src="{{thumb}}" alt="{{title}}">
+  <h3>{{title}}</h3>
 </a>
-<img src="{{thumb}}" alt="{{title}}">
 {{#if ../user}}
 {{#unless addedToRecords}}
 <a href="/artist/{{main_release}}/addtocollection"><button>Add to Collection</button></a>
@@ -13,13 +17,15 @@
 {{#unless addedToWishlist}}
 <a href="/artist/{{main_release}}/addtowishlist"><button>Add to Wishlist</button></a>
 {{/unless}}
+</div>
 
 {{/if}}
 {{else}}
+<div class="album-card">
 <a href="/artist/{{../artistId}}/album/{{id}}">
-  <h2>{{title}}</h2>
+  <img src="{{thumb}}" alt="{{title}}">
+  <h3>{{title}}</h3>
 </a>
-<img src="{{thumb}}" alt="{{title}}">
 {{#if ../user}}
 {{#unless addedToRecords}}
 <a href="/artist/{{id}}/addtocollection"><button>Add to Collection</button></a>
@@ -28,5 +34,8 @@
 <a href="/artist/{{id}}/addtowishlist"><button>Add to Wishlist</button></a>
 {{/unless}}
 {{/if}}
+</div>
 {{/if}}
 {{/each}}
+  </div>
+</div>

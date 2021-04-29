@@ -186,3 +186,57 @@ form>div {
   display: inline-block;
   width: 100px;
 }
+
+.album-view {
+  margin-top: 120px;
+  text-align: center;
+}
+
+.album-view h1 {
+  margin: 1rem;
+  font-size: 2rem;
+}
+
+.album-view h2 {
+  margin: 1rem;
+  font-size: 1.5rem;
+}
+
+.album-view h3 {
+  margin: 1rem;
+  font-size: 1rem;
+}
+
+.album-view-container {
+  margin: 3rem 5rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-items: center;
+}
+
+.album-card {
+  color: black;
+  margin-bottom: 3rem;
+}
+
+.album-card a {
+  text-align: center;
+  color: black;
+}
+
+.album-card img {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+}
+
+.album-view button {
+  display: flex;
+  flex-direction: column;
+  width: 9rem;
+  align-items: center;
+  background-color: white;
+  padding: 0.5rem 0.5rem;
+  margin: 0.5rem auto;
+  border: 2px solid black;
+}
