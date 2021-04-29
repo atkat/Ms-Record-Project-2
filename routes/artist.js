@@ -33,6 +33,7 @@ router.get('/artist/:id', (req, res, next) => {
               return recordId === String(album.main_release) || recordId === String(album.id)
             }))
           });
+          console.log(albums.releases)
           res.render('artist/album-view', {
             albums: albums.releases,
             artistId: req.params.id,
@@ -120,20 +121,32 @@ router.get('/artist/:artistId/album/:main_release', (req, res, next) => {
     })
 })
 
-router.get('/user/editProfile', (req, res, next) => { 
+router.get('/user/editProfile', (req, res, next) => {
   const user = req.session.user._id;
   User.findById(user).
-  then( userFromDB => {
-  res.render('user/editProfile', {userFromDB})
-})
+  then(userFromDB => {
+    res.render('user/editProfile', {
+      userFromDB
+    })
+  })
 })
 
 router.post('/editProfile', (req, res, next) => {
   const user = req.session.user._id;
   //console.log("THIS IS BODY:", req.body);
-  const { aboutMe, city, country } = req.body;
+  const {
+    aboutMe,
+    city,
+    country
+  } = req.body;
   User
-    .findByIdAndUpdate(user, { aboutMe, city, country }, { new: true})
+    .findByIdAndUpdate(user, {
+      aboutMe,
+      city,
+      country
+    }, {
+      new: true
+    })
     .then(user => {
       //console.log(updatedUser)
       res.redirect('/profile')

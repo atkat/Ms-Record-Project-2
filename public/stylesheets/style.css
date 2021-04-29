@@ -52,6 +52,7 @@ a {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .2);
 }
 
 .navbar img {
@@ -94,7 +95,7 @@ section {
 }
 
 .artist-results {
-  margin-top: 120px;
+  padding-top: 120px;
   text-align: center;
 }
 
@@ -185,4 +186,49 @@ form>div {
 .signup label {
   display: inline-block;
   width: 100px;
+}
+
+.profile {
+  padding: 120px 4rem;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.profile a {
+  display: inline-block;
+  margin-top: 1rem;
+  color: black;
+}
+
+.collection-list h1 {
+  margin-bottom: 2rem;
+}
+
+.collection-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.album-card-profile img {
+  height: 250px;
+  width: 250px;
+  object-fit: cover;
+}
+
+.album-card-profile {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+}
+
+#button-remove {
+  text-align: center;
+  padding: 0.5rem 1rem;
+  border: 2px solid black;
+}
+
+.profile-details a:hover {
+  text-decoration: underline;
 }
