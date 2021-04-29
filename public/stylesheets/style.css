@@ -1,48 +1,92 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;0,700;0,900;1,400;1,500&display=swap');
+
+* {
+  font-family: sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
 }
 
-h1 {
-  color: 15px;
+::placeholder {
+  color: rgba(255, 255, 255, 0.788);
+  font-weight: 400;
 }
 
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+input:focus {
+  outline: none;
 }
 
 a {
-  color: #00b7ff;
+  color: white;
+  text-decoration: none;
 }
 
-h1 {
-  color: 15px;
+.search input {
+  padding: 0.7rem 1rem;
+  border-radius: 5px;
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+  letter-spacing: 2px;
+  font-weight: 600;
 }
 
-.navbar   {
-  height: 5vh;
-  background-color: rgb(85, 74, 88);
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  padding: 0 30px;
+  background-color: hsl(0, 0%, 18%);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  border-radius: 5px;
 }
-.navbar > a {
+
+.navbar img {
+  height: 65px;
+}
+
+.links>a {
+  font-weight: 600;
+  padding: 0.7rem 1.5rem;
+  margin: 1rem 0.5rem;
+  color: rgba(0, 0, 0, 0.589);
+  background-color: transparent;
   color: white;
   font-weight: bolder;
   text-decoration: none;
-}
-.navbar .search { 
-  margin-left:  15px 25px 15px 25px;;
-  display:flex;
+  border-radius: 2px;
+  letter-spacing: 1px;
 }
 
-.navbar > input {
-  margin-left: 10px;
-  height: 90%;
-  width: 40%;
+#register {
+  background-color: rgb(235, 235, 235);
+  border: 2px solid white;
+  color: black;
+}
+
+.search {
+  margin: 0 3rem;
+  flex-grow: 1;
+}
+
+.navbar input {
+  width: 100%;
+}
+
+main {
+  min-height: 100vh;
+}
+
+section {
+  height: 100vh;
+  background-image: url('../images/background.jpg');
+  background-position: center;
+  background-size: cover;
 }
 
 .artist-results {
@@ -57,6 +101,26 @@ h1 {
   display: flex;
   flex-direction: column;
   text-justify: left;
-  
 }
 
+.index {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.index h1 {
+  text-align: center;
+  width: 700px;
+  color: white;
+  font-size: 2rem;
+  font-weight: 100;
+  line-height: 1.5;
+  letter-spacing: 3px;
+}
+
+.textbox {
+  background-color: rgba(0, 0, 0, 0.651);
+  padding: 3rem 4rem;
+}
