@@ -20,24 +20,30 @@ router.get('/artist-search', (req, res, next) => {
 });
 
 router.get('/artist/:id', (req, res, next) => {
-  User.findById(req.session.user._id).then(user => {
-
-    dis.getArtistReleases(req.params.id)
-    .then(albums => {
-      albums.releases.forEach(album => {
-        album.addedToWishlist = (user.wishList.some(recordId => {
-          return recordId === String(album.main_release) || recordId === String(album.id)
-        }))
-        
-        album.addedToRecords = (user.records.some(recordId => {
-          return recordId === String(album.main_release) || recordId === String(album.id)
-        }))
-      });
-      res.render('artist/album-view', {
-        albums: albums.releases,
-        artistId: req.params.id,
-        user: req.session.user
-      })
+  if (req.session.user) {
+    User.findById(req.session.user._id).then(user => {
+      dis.getArtistReleases(req.params.id)
+        .then(albums => {
+          albums.releases.forEach(album => {
+            album.addedToWishlist = (user.wishList.some(recordId => {
+              return recordId === String(album.main_release) || recordId === String(album.id)
+            }))
+            album.addedToRecords = (user.records.some(recordId => {
+              return recordId === String(album.main_release) || recordId === String(album.id)
+            }))
+          });
+          res.render('artist/album-view', {
+            albums: albums.releases,
+            artistId: req.params.id,
+            user: req.session.user
+          })
+        })
+    })
+  }
+  dis.getArtistReleases(req.params.id).then(albums => {
+    res.render('artist/album-view', {
+      albums: albums.releases,
+      artistId: req.params.id
     })
   })
 });
