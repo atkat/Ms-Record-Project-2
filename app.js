@@ -53,6 +53,9 @@ app.use("/", auth);
 const artist = require("./routes/artist");
 app.use("/", artist);
 
+const user = require("./routes/user");
+app.use("/", user);
+
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 

@@ -16,13 +16,13 @@ router.post('/signup', (req, res, next) => {
   } = req.body;
   if (password.length < 8) {
     res.render('auth/signup', {
-      message: 'Your password must contain at least 8 characters',
+      message: 'Your password must contain at least 8 characters.',
     });
     return
   }
   if (username === '') {
     res.render('auth/signup', {
-      message: 'Your username cannot be empty',
+      message: 'Your username cannot be empty.',
     });
     return
   }
@@ -35,12 +35,11 @@ router.post('/signup', (req, res, next) => {
     .then(userFromDB => {
       if (userFromDB !== null) {
         res.render('auth/signup', {
-          message: 'This username is already taken',
+          message: 'This username is already taken.',
         });
       } else {
         const salt = bcrypt.genSaltSync();
         const hash = bcrypt.hashSync(password, salt);
-        console.log(hash);
         User.create({
             username: username,
             password: hash,
@@ -72,7 +71,7 @@ router.post('/login', (req, res, next) => {
     .then(userFromDB => {
       if (userFromDB === null) {
         res.render('auth/login', {
-          message: 'Invalid credentials',
+          message: 'Invalid credentials.',
           user: req.session.user
         });
         return;
@@ -82,7 +81,7 @@ router.post('/login', (req, res, next) => {
         res.redirect('/profile');
       } else {
         res.render('auth/login', {
-          message: 'Invalid credentials',
+          message: 'Invalid credentials.',
           user: req.session.user
         });
       }

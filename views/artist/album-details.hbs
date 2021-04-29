@@ -12,3 +12,19 @@
   {{/each}}
 </ul>
 <p>{{albumDetails.notes}}</p>
+
+{{#if user}}
+  {{#if main_release}}
+    <a href="/artist/{{albumDetails.main_release}}/addtocollection"><button>Add to Collection</button></a>
+    <a href="/artist/{{albumDetails.main_release}}/addtowishlist"><button>Add to Wishlist</button></a>
+    <a href="/artist/{{albumDetails.main_release}}/albumStats"><button>Album Stats</button></a>
+  {{else}}
+    <a href="/artist/{{albumDetails.id}}/addtocollection"><button>Add to Collection</button></a>
+    <a href="/artist/{{albumDetails.id}}/addtowishlist"><button>Add to Wishlist</button></a> 
+    <a href="/artist/{{albumDetails.id}}/albumStats"><button>Album Stats</button></a>
+
+  {{/if}}
+{{/if}}
+
+
+

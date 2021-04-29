@@ -7,31 +7,34 @@ var dis = new Discogs({
   consumerSecret: process.env.CONSUMER_SECRET
 }).database();
 
-const loginCheck = () => {
-  return (req, res, next) => {
-    if (req.session.user) {
-      next();
-    } else {
-      res.redirect('/login')
-    }
-  }
-}
 
-/* GET home page */
-router.get("/", (req, res, next) => {
-  res.render('index', {
-    user: req.session.user
-  });
-});
+router.get('/artist/:main_release/albumStats', (req, res, next) => {
+  const recordId = req.params.main_release
+  User.find({
+      records: req.params.main_release
+    })
+    .then(inCollection => {
+      User.find({
+          wishList: req.params.main_release
+        })
+        .then(inWishlist => {
+          res.render('user/albumStats', {
+            inCollection,
+            inWishlist
+          });
+        })
+    })
+})
 
-router.get('/profile', loginCheck(), (req, res, next) => {
-  User.findById(req.session.user._id).then(user => {
+router.get('/profile/:userName', (req, res, next) => {
+  User.findOne({username: req.params.userName}).then(user => {
+    
     const collection = user.records;
     const wishlistLength = user.wishList;
     const records = [];
     let counter = 0;
-    if (collection.length === 0) {
-      res.render('user/profile', {
+      if (collection.length === 0) {
+      res.render('user/user', {
         user
       })
     }
@@ -43,7 +46,7 @@ router.get('/profile', loginCheck(), (req, res, next) => {
           counter++
           records.push(record)
           if (counter === collection.length) {
-            res.render('user/profile', {
+            res.render('user/user', {
               records,
               user
             })
@@ -53,16 +56,17 @@ router.get('/profile', loginCheck(), (req, res, next) => {
   })
 })
 
-router.get('/wishlist', loginCheck(), (req, res, next) => {
-  User.findById(req.session.user._id).then(user => {
-    const collection = user.wishList;
-    const records = []
+router.get('/profile/:userName/wishlist', (req, res, next) => {
+  User.findOne({username: req.params.userName}).then(user => {
+    const collection = user.records;
+    const records = [];
     let counter = 0;
     if (collection.length === 0) {
       res.render('wishlist', {
         user
       })
     }
+
     collection.forEach(recordId => {
       dis
         .getRelease(recordId)

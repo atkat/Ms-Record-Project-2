@@ -1,6 +1,12 @@
-<h1>Wishlist</h1>
+<h1>{{user.username}}</h1>
+<div class="aboutme">
+  <h3>About me:</h3>
+  <p>{{user.aboutMe}}</p>
+  <h3>{{user.city}}, {{user.country}}</h3>
+</div>
+<a href="/profile/{{user.username}}/wishlist">Wishlist ({{user.wishList.length}})</a>
 
-<div class="wishlist">
+<div class="collection-list">
   {{#each records}}
   <div class="album-card">
     <a href="/artist/{{artists.0.id}}">
@@ -10,7 +16,6 @@
       <img src="{{thumb}}" alt="">
       <h3>{{title}}</h3>
     </a>
-    <a href="/artist/{{id}}/deleteWishList"><button>Remove from Wishlist</button></a>
   </div>
   {{/each}}
 </div>

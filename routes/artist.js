@@ -20,21 +20,32 @@ router.get('/artist-search', (req, res, next) => {
 });
 
 router.get('/artist/:id', (req, res, next) => {
-  dis.getArtistReleases(req.params.id)
+  User.findById(req.session.user._id).then(user => {
+
+    dis.getArtistReleases(req.params.id)
     .then(albums => {
+      albums.releases.forEach(album => {
+        album.addedToWishlist = (user.wishList.some(recordId => {
+          return recordId === String(album.main_release) || recordId === String(album.id)
+        }))
+        
+        album.addedToRecords = (user.records.some(recordId => {
+          return recordId === String(album.main_release) || recordId === String(album.id)
+        }))
+      });
       res.render('artist/album-view', {
         albums: albums.releases,
         artistId: req.params.id,
         user: req.session.user
       })
     })
+  })
 });
 
 router.get('/artist/:id/addtocollection', (req, res, next) => {
-  const user = req.session.user._id;
-  //console.log("paramsId", req.params.id);
+  const userId = req.session.user._id
   User
-    .findByIdAndUpdate(user, {
+    .findByIdAndUpdate(userId, {
       $push: {
         records: req.params.id
       }
@@ -47,8 +58,7 @@ router.get('/artist/:id/addtocollection', (req, res, next) => {
 })
 
 router.get('/artist/:id/addtowishlist', (req, res, next) => {
-  const user = req.session.user._id;
-  //console.log("paramsId", req.params.id);
+  const user = req.session.user._id
   User
     .findByIdAndUpdate(user, {
       $push: {
@@ -64,7 +74,7 @@ router.get('/artist/:id/addtowishlist', (req, res, next) => {
 
 //DELETE RECORD 
 router.get('/artist/:id/delete', (req, res, next) => {
-  const user = req.session.user._id;
+  const user = req.session.user._id
   User
     .findByIdAndUpdate(user, {
       $pull: {
@@ -77,7 +87,7 @@ router.get('/artist/:id/delete', (req, res, next) => {
 });
 
 router.get('/artist/:id/deleteWishList', (req, res, next) => {
-  const user = req.session.user._id;
+  const user = req.session.user._id
   User
     .findByIdAndUpdate(user, {
       $pull: {
@@ -93,7 +103,6 @@ router.get('/artist/:artistId/album/:main_release', (req, res, next) => {
   const albumId = req.params.main_release;
   dis
     .getRelease(albumId).then(albumFromDiscogs => {
-      console.log(albumFromDiscogs.images[0].uri)
       res.render('artist/album-details', {
         tracklist: albumFromDiscogs.tracklist,
         albumDetails: albumFromDiscogs,

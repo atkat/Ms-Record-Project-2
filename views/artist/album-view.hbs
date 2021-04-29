@@ -7,8 +7,13 @@
 </a>
 <img src="{{thumb}}" alt="{{title}}">
 {{#if ../user}}
+{{#unless addedToRecords}}
 <a href="/artist/{{main_release}}/addtocollection"><button>Add to Collection</button></a>
+{{/unless}}
+{{#unless addedToWishlist}}
 <a href="/artist/{{main_release}}/addtowishlist"><button>Add to Wishlist</button></a>
+{{/unless}}
+
 {{/if}}
 {{else}}
 <a href="/artist/{{../artistId}}/album/{{id}}">
@@ -16,8 +21,12 @@
 </a>
 <img src="{{thumb}}" alt="{{title}}">
 {{#if ../user}}
+{{#unless addedToRecords}}
 <a href="/artist/{{id}}/addtocollection"><button>Add to Collection</button></a>
+{{/unless}}
+{{#unless addedToWishlist}}
 <a href="/artist/{{id}}/addtowishlist"><button>Add to Wishlist</button></a>
+{{/unless}}
 {{/if}}
 {{/if}}
 {{/each}}
