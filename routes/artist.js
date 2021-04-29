@@ -20,7 +20,8 @@ router.get('/artist-search', (req, res, next) => {
 });
 
 router.get('/artist/:id', (req, res, next) => {
-  if (req.session.user) {
+  const user = req.session.user;
+  if (user) {
     User.findById(req.session.user._id).then(user => {
       dis.getArtistReleases(req.params.id)
         .then(albums => {
@@ -39,13 +40,14 @@ router.get('/artist/:id', (req, res, next) => {
           })
         })
     })
-  }
-  dis.getArtistReleases(req.params.id).then(albums => {
-    res.render('artist/album-view', {
-      albums: albums.releases,
-      artistId: req.params.id
+  } else {
+    dis.getArtistReleases(req.params.id).then(albums => {
+      res.render('artist/album-view', {
+        albums: albums.releases,
+        artistId: req.params.id
+      })
     })
-  })
+  }
 });
 
 router.get('/artist/:id/addtocollection', (req, res, next) => {

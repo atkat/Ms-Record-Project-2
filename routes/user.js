@@ -27,61 +27,72 @@ router.get('/artist/:main_release/albumStats', (req, res, next) => {
 })
 
 router.get('/profile/:userName', (req, res, next) => {
-  User.findOne({username: req.params.userName}).then(user => {
-    
-    const collection = user.records;
-    const wishlistLength = user.wishList;
-    const records = [];
-    let counter = 0;
+  if (req.session.user) {
+    User.findOne({
+      username: req.params.userName
+    }).then(user => {
+      const collection = user.records;
+      const wishlistLength = user.wishList;
+      const records = [];
+      let counter = 0;
       if (collection.length === 0) {
-      res.render('user/user', {
-        user
-      })
-    }
-
-    collection.forEach(recordId => {
-      dis
-        .getRelease(recordId)
-        .then(record => {
-          counter++
-          records.push(record)
-          if (counter === collection.length) {
-            res.render('user/user', {
-              records,
-              user
-            })
-          }
+        res.render('user/user', {
+          user
         })
+      }
+      collection.forEach(recordId => {
+        dis
+          .getRelease(recordId)
+          .then(record => {
+            counter++
+            records.push(record)
+            if (counter === collection.length) {
+              res.render('user/user', {
+                records,
+                user
+              })
+            }
+          })
+      })
     })
-  })
+  } else {
+    res.redirect('/signup')
+  }
+
 })
 
 router.get('/profile/:userName/wishlist', (req, res, next) => {
-  User.findOne({username: req.params.userName}).then(user => {
-    const collection = user.records;
-    const records = [];
-    let counter = 0;
-    if (collection.length === 0) {
-      res.render('wishlist', {
-        user
-      })
-    }
-
-    collection.forEach(recordId => {
-      dis
-        .getRelease(recordId)
-        .then(record => {
-          counter++
-          records.push(record)
-          if (counter === collection.length) {
-            res.render('wishlist', {
-              records,
-              user
-            })
-          }
+  if (req.session.user) {
+    User.findOne({
+      username: req.params.userName
+    }).then(user => {
+      const collection = user.records;
+      const records = [];
+      let counter = 0;
+      if (collection.length === 0) {
+        res.render('wishlist', {
+          user
         })
+      }
+
+      collection.forEach(recordId => {
+        dis
+          .getRelease(recordId)
+          .then(record => {
+            counter++
+            records.push(record)
+            if (counter === collection.length) {
+              res.render('wishlist', {
+                records,
+                user
+              })
+            }
+          })
+      })
     })
-  })
+  } else {
+    res.redirect('/signup')
+  }
 })
 
 module.exports = router;
