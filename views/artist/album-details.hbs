@@ -1,30 +1,32 @@
 <div class="info">
+  <div class="album-cover">
   <img src="{{coverImg}}" alt="albumcover {{albumDetails.title}}">
+  {{#if user}}
+  {{#if main_release}}
+    <a href="/artist/{{albumDetails.main_release}}/albumStats"><button>Album Stats</button></a>
+  {{else}}
+    <a href="/artist/{{albumDetails.id}}/albumStats"><button>Album Stats</button></a>
+  {{/if}}
+{{/if}}
+  </div>
+  <div class="album-details">
   <div>
-    <h1>{{albumDetails.artists_sort}} – {{albumDetails.title}}</h1>
+    <h1>{{albumDetails.artists_sort}}</h1>
+    <h2>{{albumDetails.title}}</h2>
     <h3>{{albumDetails.year}}</h3>
   </div>
-</div>
-
+ <div class="tracks-list">
 <ul>
   {{#each tracklist}}
   <li>{{position}}. {{title}}{{#if duration}} – {{duration}}{{/if}}</li>
   {{/each}}
 </ul>
+</div> 
+<div>
 <p>{{albumDetails.notes}}</p>
-
-{{#if user}}
-  {{#if main_release}}
-    <a href="/artist/{{albumDetails.main_release}}/addtocollection"><button>Add to Collection</button></a>
-    <a href="/artist/{{albumDetails.main_release}}/addtowishlist"><button>Add to Wishlist</button></a>
-    <a href="/artist/{{albumDetails.main_release}}/albumStats"><button>Album Stats</button></a>
-  {{else}}
-    <a href="/artist/{{albumDetails.id}}/addtocollection"><button>Add to Collection</button></a>
-    <a href="/artist/{{albumDetails.id}}/addtowishlist"><button>Add to Wishlist</button></a> 
-    <a href="/artist/{{albumDetails.id}}/albumStats"><button>Album Stats</button></a>
-
-  {{/if}}
-{{/if}}
+</div> 
+</div>
+</div>
 
 
 

@@ -38,7 +38,7 @@ router.post('/signup', (req, res, next) => {
         const salt = bcrypt.genSaltSync();
         const hash = bcrypt.hashSync(password, salt);
         User.create({
-            username: username,
+            username: username.toLowerCase(),
             password: hash,
             aboutMe: aboutMe,
             city: city,
@@ -66,7 +66,7 @@ router.post('/login', (req, res, next) => {
     password
   } = req.body;
   User.findOne({
-      username: username
+      username: username.toLowerCase()
     })
     .then(userFromDB => {
       if (userFromDB === null) {

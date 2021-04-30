@@ -126,6 +126,10 @@ section {
   color: black;
 }
 
+.artist-card a:hover {
+  text-decoration: underline;
+}
+
 .index {
   height: 100vh;
   display: flex;
@@ -225,9 +229,13 @@ form>div {
   color: black;
 }
 
+.album-card a:hover {
+  text-decoration: underline;
+}
+
 .album-card img {
-  height: 100px;
-  width: 100px;
+  height: 150px;
+  width: 150px;
   object-fit: cover;
 }
 
@@ -248,14 +256,28 @@ form>div {
   grid-template-columns: 1fr 3fr;
 }
 
+.profile p {
+  font-size: 0.8rem;
+}
+
 .profile a {
   display: inline-block;
   margin-top: 1rem;
   color: black;
 }
 
+.profile a:hover {
+  text-decoration: underline;
+}
+
+.profile-details h3 {
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
 .collection-list h1 {
-  margin-bottom: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .collection-container {
@@ -285,4 +307,103 @@ form>div {
 
 .profile-details a:hover {
   text-decoration: underline;
+}
+
+.info {
+  padding-top: 120px;
+  text-align: center;
+  margin: 1rem 5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.album-details {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: 35rem;
+}
+
+.album-cover img {
+  height: 400px;
+  width: 400px;
+  object-fit: cover;
+  padding: 1rem;
+}
+
+.info h1 {
+  margin: 1rem;
+  font-size: 2rem;
+}
+
+.info h2 {
+  margin: 1rem;
+  font-size: 1.5rem;
+}
+
+.info h3 {
+  margin: 1rem;
+  font-size: 1.2rem;
+}
+
+.tracks-list {
+  text-align: center;
+}
+
+.tracks-list ul {
+  display: inline-block;
+  text-align: left;
+  margin: 1rem 2rem 2rem 2rem;
+  list-style-position: inside;
+}
+
+.info a {
+  text-align: center;
+  color: black;
+}
+
+.info button {
+  display: flex;
+  flex-direction: column;
+  width: 9rem;
+  align-items: center;
+  background-color: white;
+  padding: 0.5rem 0.5rem;
+  margin: 0.5rem auto;
+  border: 2px solid black;
+}
+
+.info a:hover {
+  text-decoration: underline;
+}
+
+.album-stats {
+  padding: 120px 4rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.album-stats h2 {
+  padding: 1rem;
+}
+
+
+.album-stats a {
+  text-align: center;
+  color: black;
+}
+
+.album-stats a:hover {
+  text-decoration: underline;
+}
+
+.in-collection {
+  padding: 1rem 2rem;
+  margin-left: 15rem;
+}
+
+.in-wishlist {
+  padding: 1rem 2rem;
+  margin-right: 15rem;
 }
