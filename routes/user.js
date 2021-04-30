@@ -8,8 +8,9 @@ var dis = new Discogs({
 }).database();
 
 
-router.get('/artist/:main_release/albumStats', (req, res, next) => {
-  const recordId = req.params.main_release
+router.get('/artist/:main_release/albumStats', (req, res, next) => {  
+  if (req.session.user) {
+    const recordId = req.params.main_release
   User.find({
       records: req.params.main_release
     })
@@ -20,14 +21,20 @@ router.get('/artist/:main_release/albumStats', (req, res, next) => {
         .then(inWishlist => {
           res.render('user/albumStats', {
             inCollection,
-            inWishlist
+            inWishlist,
+            user: req.session.user
           });
         })
     })
+    .catch(err => {
+      next(err)
+    })
+  }
 })
 
 router.get('/profile/:userName', (req, res, next) => {
   if (req.session.user) {
+
     User.findOne({
       username: req.params.userName
     }).then(user => {
@@ -54,6 +61,7 @@ router.get('/profile/:userName', (req, res, next) => {
             }
           })
       })
+      .catch(err => next(err))
     })
   } else res.redirect('/signup')
 })
@@ -85,6 +93,7 @@ router.get('/profile/:userName/wishlist', (req, res, next) => {
               })
             }
           })
+          .catch(err => next(err))
       })
     })
   } else res.redirect('/signup')

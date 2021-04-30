@@ -1,6 +1,9 @@
 <div class="info">
-  <div class="album-cover">
+  <div class="left-box">
+    <div class="album-cover">
   <img src="{{coverImg}}" alt="albumcover {{albumDetails.title}}">
+  </div>
+  <div class="people-like-button">
   {{#if user}}
   {{#if main_release}}
     <a href="/artist/{{albumDetails.main_release}}/albumStats"><button>People who like this</button></a>
@@ -8,6 +11,9 @@
     <a href="/artist/{{albumDetails.id}}/albumStats"><button>People who like this</button></a>
   {{/if}}
 {{/if}}
+</div>
+  
+  
   </div>
   <div class="album-details">
   <div>

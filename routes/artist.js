@@ -16,7 +16,8 @@ router.get('/artist-search', (req, res, next) => {
       artists: c.results,
       user: req.session.user
     })
-  });
+  })
+  .catch(err => next(err))
 });
 
 router.get('/artist/:id', (req, res, next) => {
@@ -48,6 +49,7 @@ router.get('/artist/:id', (req, res, next) => {
         artistId: req.params.id
       })
     })
+    .catch(err => next(err))
   }
 });
 

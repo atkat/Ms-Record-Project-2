@@ -318,6 +318,12 @@ form>div {
   justify-content: center;
 }
 
+.left-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .album-details {
   display: flex;
   flex-direction: column;

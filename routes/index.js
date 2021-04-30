@@ -49,6 +49,7 @@ router.get('/profile', loginCheck(), (req, res, next) => {
             })
           }
         })
+        .catch(err => next(err))
     })
   })
 })
@@ -76,6 +77,7 @@ router.get('/wishlist', loginCheck(), (req, res, next) => {
             })
           }
         })
+        .catch(err => next(err))
     })
   })
 })

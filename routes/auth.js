@@ -3,7 +3,8 @@ const User = require('../models/User.model');
 const bcrypt = require('bcrypt');
 
 router.get('/signup', (req, res, next) => {
-  res.render('auth/signup');
+  res.render('auth/signup')
+  .catch(err => next(err));
 })
 
 router.post('/signup', (req, res, next) => {
@@ -57,7 +58,8 @@ router.post('/signup', (req, res, next) => {
 router.get('/login', (req, res, next) => {
   res.render('auth/login', {
     user: req.session.user
-  });
+  })
+  .catch(err => next(err));
 })
 
 router.post('/login', (req, res, next) => {
@@ -86,6 +88,7 @@ router.post('/login', (req, res, next) => {
         });
       }
     })
+    .catch(err => next(err))
 })
 
 router.get('/logout', (req, res, next) => {
@@ -96,6 +99,7 @@ router.get('/logout', (req, res, next) => {
       res.redirect('/');
     }
   })
+  .catch(err => next(err))
 });
 
 
