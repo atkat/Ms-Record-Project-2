@@ -31,7 +31,7 @@ a {
   padding: 0.7rem 1rem;
   border-radius: 5px;
   background-color: transparent;
-  border: 2px solid white;
+  border: 1.5px solid white;
   color: white;
   letter-spacing: 2px;
   font-weight: 600;
@@ -56,7 +56,8 @@ a {
 }
 
 .navbar img {
-  height: 65px;
+  height: 60px;
+  margin-left: 10px;
 }
 
 .links>a {
@@ -328,11 +329,11 @@ form>div {
   height: 400px;
   width: 400px;
   object-fit: cover;
-  padding: 1rem;
+  border: 0.5px solid black;
 }
 
 .info h1 {
-  margin: 1rem;
+  margin: 0rem 1rem 1rem 1rem;
   font-size: 2rem;
 }
 
@@ -347,12 +348,13 @@ form>div {
 }
 
 .tracks-list {
-  text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
-.tracks-list ul {
+.tracks-list ol {
   display: inline-block;
-  text-align: left;
+  text-align: center;
   margin: 1rem 2rem 2rem 2rem;
   list-style-position: inside;
 }
@@ -363,14 +365,14 @@ form>div {
 }
 
 .info button {
-  display: flex;
-  flex-direction: column;
-  width: 9rem;
-  align-items: center;
-  background-color: white;
+  display: inline;
+  color: white;
+  width: 10rem;
+  background-color: black;
   padding: 0.5rem 0.5rem;
-  margin: 0.5rem auto;
+  margin: 1rem auto;
   border: 2px solid black;
+  cursor: pointer
 }
 
 .info a:hover {

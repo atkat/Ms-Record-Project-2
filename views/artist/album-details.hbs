@@ -3,9 +3,9 @@
   <img src="{{coverImg}}" alt="albumcover {{albumDetails.title}}">
   {{#if user}}
   {{#if main_release}}
-    <a href="/artist/{{albumDetails.main_release}}/albumStats"><button>Album Stats</button></a>
+    <a href="/artist/{{albumDetails.main_release}}/albumStats"><button>People who like this</button></a>
   {{else}}
-    <a href="/artist/{{albumDetails.id}}/albumStats"><button>Album Stats</button></a>
+    <a href="/artist/{{albumDetails.id}}/albumStats"><button>People who like this</button></a>
   {{/if}}
 {{/if}}
   </div>
@@ -16,11 +16,11 @@
     <h3>{{albumDetails.year}}</h3>
   </div>
  <div class="tracks-list">
-<ul>
+<ol>
   {{#each tracklist}}
-  <li>{{position}}. {{title}}{{#if duration}} – {{duration}}{{/if}}</li>
+  <li>{{title}}{{#if duration}} – {{duration}}{{/if}}</li>
   {{/each}}
-</ul>
+</ol>
 </div> 
 <div>
 <p>{{albumDetails.notes}}</p>
